@@ -1,7 +1,6 @@
 var mongoose = require("mongoose");
 
-mongoose.connect( process.env.MONGOLAB_URI ||
-                  process.env.MONGOHQ_URL ||
+mongoose.connect( process.env.MONGODB_URI || 
                   "mongodb://localhost/personal-api");
 
 module.exports.Profile = require("./profile.js");
