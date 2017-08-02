@@ -10,6 +10,6 @@ var HousewivesSchema = new Schema({
   current_status: String,
 });
 
-var Campsite = mongoose.model('Campsite', CampsiteSchema);
+var Housewives = mongoose.model('Housewives', HousewivesSchema);
 
-module.exports = Campsite;
+module.exports = Housewives;

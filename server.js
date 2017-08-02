@@ -48,41 +48,6 @@ var profile = {
   ]
 };
 
-var realHousewives = [ /*here is a random note*/
-  {
-    id: _1,
-    name: "Dorinda",
-    location: "New York City",
-    flaw: "Slurring, crazy drunk",
-    number_of_husbands: 2,
-    current_status: "active"
-  },
-  {
-      id: _2,
-    name: "Tamra",
-    location: "Orange County",
-    flaw: "Anger issues",
-    number_of_husbands: 2,
-    current_status: "active"
-  },
-  {    
-    id: _3,
-    name: "Mama Elsa",
-    location: "Miami",
-    flaw: "botched plastic surgeries",
-    number_of_husbands: 3,
-    current_status: "deceased"
-  },
-  {
-    id: _4,
-    name: "Lisa Vanderpump",
-    location: "Beverly Hills",
-    flaw: "Stuck-up old bitch",
-    number_of_husbands: 1,
-    current_status: "active"
-  }
-],
-
 /**********
  * ROUTES *
  **********/
@@ -111,17 +76,60 @@ app.get('/api', function api_index(req, res) {
     message: "Hey what's up hello!? Welcome to Sam's personal api.. here's what you need to know!",
     documentation_url: "https://github.com/samascher/express-personal-api", // Changed -- need to add documentation
     base_url: "https://pacific-scrubland-15691.herokuapp.com/", // Changed
-    endpoints: [
+endpoints: [
       {method: "GET", path: "/api", description: "Describes all available endpoints"},
-      {method: "GET", path: "/api/profile", description: "Some basic information about me!"},
-      {method: "POST", path: "/api/housewives", description: "My favorite Real Housewives"}
+      {method: "GET", path: "/api/profile", description: "Profile with my personal api data"}, 
+      {method: "POST", path: "/api/housewives", description: "all housewives i like"}, // CHANGE ME
+      {method: "GET", path: "/api/housewives/", description: "get all housewives"},
+      {method: "GET", path: "/api/housewives/:name", description: "get housewives by name"}
     ]
+
   });
 });
 
-app.get('/api/profile', function (req, res){
-  db.Profile.find({}, function (err, profile){
-    res.json(profile);
+app.get('/api/profile', function index(req, res) {
+  db.Profile.find()
+  .exec(function(err, profiles){
+    if (err) {return console.log("index error: " + err);}
+    res.json(profiles);
+  });
+});
+
+app.post('/api/housewives', function(req, res){
+  // create in DB
+  var newHousewives = db.Housewives({
+    name: req.body.name,
+    height: req.body.height,
+    climbed: req.body.climbed, 
+    Skiied: req.body.Skiied
+
+  });
+  // Save to DB
+  newHousewives.save(function(err, housewives){
+    if(err){
+      return console.log("Error saving: " + err);
+    }
+    console.log("Saved: " + housewives);
+    res.json(housewives);
+  });
+
+});
+
+app.get('/api/housewives', function index(req, res) {
+  db.Housewives.find()
+  .exec(function(err, housewives){
+    if (err) {return console.log("index error: " + err);}
+    res.json(housewives);
+  });
+});
+
+// get housewives by name 
+app.get('/api/housewives/:name', function(req, res){
+  db.Housewives.findOne({name: req.params.name}, function(err, data){
+    if(err){
+      return console.log("Search Error: " + err);
+    }
+    res.json(data);
   });
 });
 
