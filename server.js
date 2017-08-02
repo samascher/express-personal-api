@@ -48,7 +48,7 @@ var profile = {
   ]
 };
 
-var realHousewives = [
+var realHousewives = [ /*here is a random note*/
   {
     id: _1,
     name: "Dorinda",
@@ -114,7 +114,7 @@ app.get('/api', function api_index(req, res) {
     endpoints: [
       {method: "GET", path: "/api", description: "Describes all available endpoints"},
       {method: "GET", path: "/api/profile", description: "Some basic information about me!"},
-      {method: "POST", path: "/api/campsites", description: "My favorite Real Housewives"}
+      {method: "POST", path: "/api/housewives", description: "My favorite Real Housewives"}
     ]
   });
 });
