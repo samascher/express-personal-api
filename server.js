@@ -19,7 +19,6 @@ Some hardcoded data
 ******************/
 
 var profile = {
-  id: _1,
   name: "Sam Ascher",
   current_city: "Denver",
   github_link: "https://github.com/samascher",
