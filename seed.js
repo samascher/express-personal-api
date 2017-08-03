@@ -24,7 +24,7 @@ var new_profile = [
 	}
 ];
 
-var new_housewife = [
+var new_housewives = [
 	{
 		name: "Kyle Richards",
 		location: "Beverly Hills",
@@ -73,12 +73,15 @@ db.Profile.remove({}, function(err, profiles){
 });
 
 
-db.Housewife.remove({}, function(err, mountains){
+db.Housewives.remove({}, function(err, housewives){
 	console.log("Removed all housewives");
-	db.Housewife.create(new_housewife, function(err, housewife){
-		if(err){
-			return console.log("Error: " + err);
-		}
-		console.log("created the housewife: " + housewife);
+	new_housewives.forEach(function(housewife) {
+		db.Housewives.create({name: housewife.name, location: housewife.location, flaw: housewife.flaw, status: housewife.status}, function(err, newHousewives){
+			if(err){
+				return console.log("Error: " + err);
+			}
+			console.log(newHousewives);
+			newHousewives.save();
+		});
 	});
 });

@@ -68,7 +68,7 @@ app.get('/api/profile', function index(req, res) {
   db.Profile.find()
   .exec(function(err, profiles){
     if (err) {return console.log("index error: " + err);}
-    res.json(profiles);
+    res.json(profiles[0]);
   });
 });
 
