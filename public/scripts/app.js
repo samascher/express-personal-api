@@ -10,7 +10,7 @@ $(document).ready(function(){
   });
 
 });
-var myProfileData = "";
+var ProfileData = "";
 
 //  NEED TO APPEND TO THE WEBPAGE //
-$("#myProfile").append(myProfileData);
+$("#Profile").append(ProfileData);
