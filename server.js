@@ -74,10 +74,10 @@ app.get('/api', function api_index(req, res) {
     woops_i_has_forgot_to_document_all_my_endpoints: true, // CHANGE ME ;)
     message: "Hey what's up hello!? Welcome to Sam's personal api.. here's what you need to know!",
     documentation_url: "https://github.com/samascher/express-personal-api", // Changed -- need to add documentation
-    base_url: "https://pacific-scrubland-15691.herokuapp.com/", // Changed
+    base_url: "https://cryptic-earth-48542.herokuapp.com/api", // Changed
 endpoints: [
-      {method: "GET", path: "/api", description: "Describes all available endpoints"},
-      {method: "GET", path: "/api/profile", description: "Profile with my personal api data"}, 
+      {method: "GET", path: "/api", description: "all available endpoints"},
+      {method: "GET", path: "/api/profile", description: "profile with my personal api data"}, 
       {method: "POST", path: "/api/housewives", description: "all housewives i like"}, // CHANGE ME
       {method: "GET", path: "/api/housewives/", description: "get all housewives"},
       {method: "GET", path: "/api/housewives/:name", description: "get housewives by name"}
