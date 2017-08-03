@@ -49,7 +49,7 @@ app.get('/', function homepage(req, res) {
 app.get('/api', function api_index(req, res) {
   // TODO: Document all your api endpoints below
   res.json({
-    woops_i_has_forgot_to_document_all_my_endpoints: true, // changed
+    woops_i_has_forgot_to_document_all_my_endpoints: false, // changed
     message: "Hey what's up hello!? Welcome to Sam's personal api.. here's what you need to know!",
     documentation_url: "https://github.com/samascher/express-personal-api", // Changed -- need to add documentation
     base_url: "https://cryptic-earth-48542.herokuapp.com/api", // Changed
