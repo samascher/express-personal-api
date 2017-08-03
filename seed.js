@@ -29,42 +29,36 @@ var new_housewife = [
 		name: "Kyle Richards",
 		location: "Beverly Hills",
 		flaw: "Two-faced",
-		number_of_husbands: 1,
-		current_status: "Active",
+		status: "Active",
 	},	{
 		name: "Joanna Krupa",
 		location: "Miami",
 		flaw: "Kind of crazy",
-		number_of_husbands: 1,
-		current_status: "Inactive",
+		status: "Inactive",
 	},
 	{
 	    name: "Dorinda",
 	    location: "New York City",
 	    flaw: "Slurring, crazy drunk",
-	    number_of_husbands: 2,
-	    current_status: "active"
+	    status: "active"
 	  },
 	  {
 	    name: "Tamra",
 	    location: "Orange County",
 	    flaw: "Anger issues",
-	    number_of_husbands: 2,
-	    current_status: "active"
+	    status: "active"
 	  },
 	  {    
 	    name: "Mama Elsa",
 	    location: "Miami",
 	    flaw: "botched plastic surgeries",
-	    number_of_husbands: 3,
-	    current_status: "deceased"
+	    status: "deceased"
 	  },
 	  {
 	    name: "Lisa Vanderpump",
 	    location: "Beverly Hills",
 	    flaw: "Stuck-up old bitch",
-	    number_of_husbands: 1,
-	    current_status: "active"
+	    status: "active"
 	  }
 ];
 

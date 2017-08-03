@@ -14,39 +14,6 @@ app.use(bodyParser.json());
 
 var db = require('./models');
 
-/******************
-Some hardcoded data
-******************/
-
-var profile = {
-  name: "Sam Ascher",
-  current_city: "Denver",
-  github_link: "https://github.com/samascher",
-  github_profile_image: "https://github.com/account",
-  favorite_drinks: [
-    {
-      name: "riesling",
-      type: "wine",
-      temperature: "cold"
-    },
-    {
-      name: "sauvignon blanc",
-      type: "wine",
-      temperature: "very cold"
-    },
-    {
-      name: "lemonade",
-      type: "flavored water",
-      temperature: "semi-cold"
-    },
-    {
-      name: "la croix cran-raspberry",
-      type: "sparkling water",
-      temperature: "room-temp",
-    },
-  ]
-};
-
 /**********
  * ROUTES *
  **********/
@@ -54,6 +21,17 @@ var profile = {
 // Serve static files from the `/public` directory:
 // i.e. `/images`, `/scripts`, `/styles`
 app.use(express.static('public'));
+
+// app.get('/api/profile', function (req, res) {
+//   db.Profile.find()
+
+//     .exec(function(err, profiles){
+//     if (err) {return console.log("index error: " + err);}
+//     res.json(profiles);
+//   });
+// });
+
+
 
 /*
  * HTML Endpoints
@@ -71,14 +49,14 @@ app.get('/', function homepage(req, res) {
 app.get('/api', function api_index(req, res) {
   // TODO: Document all your api endpoints below
   res.json({
-    woops_i_has_forgot_to_document_all_my_endpoints: true, // CHANGE ME ;)
+    woops_i_has_forgot_to_document_all_my_endpoints: true, // changed
     message: "Hey what's up hello!? Welcome to Sam's personal api.. here's what you need to know!",
     documentation_url: "https://github.com/samascher/express-personal-api", // Changed -- need to add documentation
     base_url: "https://cryptic-earth-48542.herokuapp.com/api", // Changed
 endpoints: [
       {method: "GET", path: "/api", description: "all available endpoints"},
       {method: "GET", path: "/api/profile", description: "profile with my personal api data"}, 
-      {method: "POST", path: "/api/housewives", description: "all housewives i like"}, // CHANGE ME
+      {method: "POST", path: "/api/housewives", description: "all housewives i like"}, 
       {method: "GET", path: "/api/housewives/", description: "get all housewives"},
       {method: "GET", path: "/api/housewives/:name", description: "get housewives by name"}
     ]
@@ -98,12 +76,11 @@ app.post('/api/housewives', function(req, res){
   // create in DB
   var newHousewives = db.Housewives({
     name: req.body.name,
-    height: req.body.height,
-    climbed: req.body.climbed, 
-    Skiied: req.body.Skiied
-
+    location: req.body.location,
+    flaw: req.body.flaw, 
+    status: req.body.status
   });
-  // Save to DB
+// Save to DB
   newHousewives.save(function(err, housewives){
     if(err){
       return console.log("Error saving: " + err);
@@ -131,6 +108,9 @@ app.get('/api/housewives/:name', function(req, res){
     res.json(data);
   });
 });
+
+
+
 
 /**********
  * SERVER *
